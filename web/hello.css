@@ -1,0 +1,27 @@
+h1{
+	size: 300%
+}
+
+b{
+	size: 150%;
+}
+
+i{
+	size: 75%;
+}
+
+#one{
+	width: 225px;
+	height: 150px;
+}
+
+#two{
+	width: 225px; 
+	height: 200px;
+}
+
+#three{
+	width: 225px; 
+	height: 175px;
+}
+
