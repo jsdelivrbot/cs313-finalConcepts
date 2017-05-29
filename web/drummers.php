@@ -1,23 +1,6 @@
 <?php
-  error_reporting(E_ALL);
-  ini_set('display_errors', 1);
-    $dbUrl = getenv('DATABASE_URL');
-  if (empty($dbUrl)) {
-    $dbUrl = "postgres://postgres:doublebass21@localhost:5432/mydb";
-  }
-  $dbopts = parse_url($dbUrl);
-  $dbHost = $dbopts["host"];
-  $dbPort = $dbopts["port"];
-  $dbUser = $dbopts["user"];
-  $dbPassword = $dbopts["pass"];
-  $dbName = ltrim($dbopts["path"],'/');
-  try {
-    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-  }
-  catch (PDOException $ex) {
-    print "<p>error: $ex->getMessage() </p>\n\n";
-    die();
-  }
+require("dbConnect.php");
+$db = get_db();
 ?>
 
 <!doctype html>
@@ -28,7 +11,8 @@
   </head> 
   <body>
     <h1>Drummers</h1>
-    <i>Select a drummer to see their gear</i>
+    <a href="addDrummer.php">Go here to add a drummer</a><br /><br />
+    <i>Select a drummer to see their setup</i>
     <?php
     $stmt = $db->prepare('SELECT * FROM drummer');
     $stmt->execute();
@@ -81,19 +65,21 @@
       $stmt5->bindValue(':crash_id', $crash_id, PDO::PARAM_INT);
       $stmt5->execute();
       $rows5 = $stmt5->fetchAll(PDO::FETCH_ASSOC);
-    }
 
-    echo '<h2>' . $name . '</h2>'; // display info 
-    echo '<p>' . "Company: ". $Dcompany . '</p>';
-    echo '<p>' . "Kit Model: " . $model . '</p>';
-    echo '<p>' . "Kick Drum Size: " . $kick . '</p>';
-    echo '<p>' . "Tom Sizes: " . $toms . '</p>';
-    echo '<p>' . "Snare: " .  $snare . '</p>';
-    echo '<p>' . "Cymbal Company: " .  $Ccompany . '<p>';
-    echo '<p>' . "Cymbals: " . '<p>';
+      echo '<h2>' . $name . '</h2>'; // display info 
+      echo '<p>' . "Company: ". $Dcompany . '</p>';
+      echo '<p>' . "Kit Model: " . $model . '</p>';
+      echo '<p>' . "Kick Drum Size: " . $kick . '</p>';
+      echo '<p>' . "Tom Sizes: " . $toms . '</p>';
+      echo '<p>' . "Snare: " .  $snare . '</p>';
+      echo '<p>' . "Cymbal Company: " .  $Ccompany . '<p>';
+      echo '<p>' . "Cymbals: " . '<p>';
      foreach ($rows5 as $unit) {
        echo '<p>' . $unit['size'] . 'in. ' . $unit['name'] . '</p>';
      }
+    }
+
+    
     ?>
   </body>
 </html>
