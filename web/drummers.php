@@ -37,7 +37,7 @@ $db = get_db();
       $stmt2->bindValue(':name', $name, PDO::PARAM_STR);
       $stmt2->execute();
       $rows2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-      $cymbal_id = $rows2[0]['cymabl_id'];
+      $cymbal_id = $rows2[0]['cymbal_id'];
       $drum_id = $rows2[0]['drum_id'];
 
       $stmt3 = $db->prepare('SELECT * FROM drum_config WHERE id=:drum_id'); // get drummers drums
@@ -48,7 +48,12 @@ $db = get_db();
       $model = $rows3[0]['kit_model'];
       $kick = $rows3[0]['kick'];
       $snare = $rows3[0]['snare'];
-      $toms = $rows3[0]['toms'];
+      $side_snare = $rows3[0]['side_snare'];
+      $mount_tom1 = $rows3[0]['mount_tom1'];
+      $mount_tom2 = $rows3[0]['mount_tom2'];
+      $mount_tom3 = $rows3[0]['mount_tom3'];
+      $floor_tom1 = $rows3[0]['floor_tom1'];
+      $floor_tom2 = $rows3[0]['floor_tom2'];
 
       $stmt4 = $db->prepare('SELECT * FROM cymbal_config WHERE id=:cymbal_id'); // get drumers cymbal set-up
       $stmt4->bindValue(':cymbal_id', $cymbal_id, PDO::PARAM_INT);
@@ -70,8 +75,12 @@ $db = get_db();
       echo '<p>' . "Company: ". $Dcompany . '</p>';
       echo '<p>' . "Kit Model: " . $model . '</p>';
       echo '<p>' . "Kick Drum Size: " . $kick . '</p>';
-      echo '<p>' . "Tom Sizes: " . $toms . '</p>';
+      echo '<p>' . "Mounted Tom(s): " . $mount_tom1 . ' ' . $mount_tom2 . ' ' . $mount_tom3 . '</p>';
+      echo '<p>' . "Floor Tom(s): " . $floor_tom1 . ' ' . $floor_tom2 . '</p>';
       echo '<p>' . "Snare: " .  $snare . '</p>';
+      if($side_snare){
+        echo '<p>' . "Side Snare: " . $side_snare . '<p>';
+      }
       echo '<p>' . "Cymbal Company: " .  $Ccompany . '<p>';
       echo '<p>' . "Cymbals: " . '<p>';
      foreach ($rows5 as $unit) {
