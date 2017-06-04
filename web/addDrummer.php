@@ -183,6 +183,8 @@ $db = get_db();
 		$statement = $db->prepare($query);
 		$statement->bindValue(':ride', $ride);
 		$statement->bindValue(':ride_size', $ride_size);
+		//print_r($statement);
+		//$statement->debugDumpParams();
 		$statement->execute();
 		$ride_id = $db->lastInsertId('cymbal_id_seq');  
 
@@ -190,6 +192,8 @@ $db = get_db();
 		$statement = $db->prepare($query);
 		$statement->bindValue(':hats', $hats);
 		$statement->bindValue(':hat_size', $hat_size);
+		//print_r($statement);
+		//$statement->debugDumpParams();
 		$statement->execute();
 		$hats_id = $db->lastInsertId('cymbal_id_seq');
 
@@ -197,6 +201,8 @@ $db = get_db();
 		$statement = $db->prepare($query);
 		$statement->bindValue(':crash', $crash);
 		$statement->bindValue(':crash_size', $crash_size);
+		//print_r($statement);
+		//$statement->debugDumpParams();
 		$statement->execute();
 		$crash_id = $db->lastInsertId('cymbal_id_seq');
 
@@ -206,18 +212,26 @@ $db = get_db();
 		$statement->bindValue(':ride_id', $ride_id);
 		$statement->bindValue(':hats_id', $hats_id);
 		$statement->bindValue(':crash_id', $crash_id);
+		//print_r($statement);
+		//$statement->debugDumpParams();
 		$statement->execute();
 		$cymabl_id = $db->lastInsertId('cymbal_config_id_seq');
 
 		$query = 'INSERT INTO drum_config(company, kit_model, kick, mount_tom1, mount_tom2, mount_tom3, floor_tom1, floor_tom2, snare, side_snare) 
-			VALUES(:drumCompany, :kit, :kick, :mt1, $mt2, $mt3, :ft1, $ft2, :snare, $side_snare)';
+			VALUES(:drumCompany, :kit, :kick, :mt1, :mt2, :mt3, :ft1, :ft2, :snare, :side_snare)';
 		$statement = $db->prepare($query);
 		$statement->bindValue(':drumCompany', $drumCompany);
 		$statement->bindValue(':kit', $kit);
 		$statement->bindValue(':kick', $kick);
 		$statement->bindValue(':mt1', $mt1);
+		$statement->bindValue(':mt2', $mt2);
+		$statement->bindValue(':mt3', $mt3);
 		$statement->bindValue(':ft1', $ft1);
+		$statement->bindValue(':ft2', $ft2);
 		$statement->bindValue(':snare', $snare);
+		$statement->bindValue(':side_snare', $side_snare);
+		//print_r($statement);
+		//$statement->debugDumpParams();
 		$statement->execute();
 		$drum_id = $db->lastInsertId('drum_config_id_seq');
 
@@ -226,6 +240,8 @@ $db = get_db();
 		$statement->bindValue(':name', $name);
 		$statement->bindValue(':drum_id', $drum_id);
 		$statement->bindValue(':cymabl_id', $cymabl_id);
+		//print_r($statement);
+		//$statement->debugDumpParams();
 		$statement->execute();
 	}
 	?>
