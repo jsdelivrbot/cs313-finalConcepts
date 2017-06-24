@@ -24,7 +24,7 @@ app.get('/db', function (request, response) {
 });
 
 app.get('/', function(request, response) {
-  response.render('account');
+  response.render('account.html');
 });
 
 app.listen(app.get('port'), function() {

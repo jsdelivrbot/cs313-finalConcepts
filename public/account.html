@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
-<style>
-/* Full-width input fields */
+  <head>
+    <title></title>
+    <style type="text/css">
+      /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -13,7 +15,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-    background-color: #4CAF50;
+    background-color: cadetblue;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -37,7 +39,8 @@ button:hover {
     padding: 16px;
 }
 
-span.psw {
+button.psw {
+    width: auto;
     float: right;
     padding-top: 16px;
 }
@@ -107,10 +110,13 @@ span.psw {
        width: 100%;
     }
 }
-</style>
+    </style>
+    <link rel="stylesheet" type="text/css" href="/account.css">
+  </head>
 <body>
 
-<h2>Modal Login Form</h2>
+
+<h2>Get Started</h2>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
@@ -132,7 +138,7 @@ span.psw {
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span onclick="document.getElementById('id03').style.display='block'" class="psw">Forgot <a href="#">password?</a></span>
+      <button type="button" onclick="document.getElementById('id03').style.display='block'" class="psw">Forgot password?</button>
     </div>
   </form>
 </div>
@@ -155,7 +161,7 @@ span.psw {
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
   </form>
 </div>
@@ -175,7 +181,7 @@ span.psw {
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
   </form>
 </div>
