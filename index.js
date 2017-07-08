@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 var pg = require('pg');
+var connectionString = "postgres://*USERNAME*:*PASSWORD*@*HOST*:*PORT:/*DATABASE*"
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -12,7 +13,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL?ssl=true, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
@@ -24,7 +25,7 @@ app.get('/db', function (request, response) {
 });
 
 app.get('/', function(request, response) {
-  response.render('account.html');
+  response.render('pages/index');
 });
 
 app.listen(app.get('port'), function() {

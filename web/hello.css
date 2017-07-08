@@ -1,0 +1,57 @@
+h1{
+	font-size: 500%;
+	padding: 0px;
+    margin: 0px;
+}
+
+h2{
+	font-size: 300%;
+}
+
+h3{
+	font-size: 200%;
+}
+
+a, b{
+	font-size: 150%;
+}
+
+b:hover{
+	opacity: 0.1;
+	cursor: pointer;
+}
+
+i{
+	font-size: 150%;
+	padding: 0px;
+    margin: 0px;
+}
+
+p{
+	width: 750px;
+}
+
+body{
+	background-color: grey;
+
+}
+
+#img1{
+	width: 225px;
+	height: 150px;
+}
+
+#img2{
+	width: 225px; 
+	height: 175px;
+}
+
+#img3{
+	width: 225px; 
+	height: 150px;
+}
+
+#info{
+	font-size: 125%
+}
+
